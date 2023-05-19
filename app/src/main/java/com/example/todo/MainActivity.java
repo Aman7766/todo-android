@@ -6,13 +6,26 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
-    RecyclerView rv;
+ArrayList<ItemView> itemViews=new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        rv=findViewById(R.id.RV);
+        itemViews.add(new ItemView(true,"Hello1"));
+        itemViews.add(new ItemView(true,"Hello2"));
+        itemViews.add(new ItemView(true,"Hello3"));
+        itemViews.add(new ItemView(true,"Hello4"));
+        itemViews.add(new ItemView(true,"Hello5"));
+        itemViews.add(new ItemView(true,"Hello6"));
+        itemViews.add(new ItemView(true,"Hello7"));
+        itemViews.add(new ItemView(true,"Hello8"));
+        itemViews.add(new ItemView(true,"Hello9"));
+
+         MyAdapter myAdapter=new MyAdapter(this,R.layout.item_view,itemViews);
+
 
 
     }
