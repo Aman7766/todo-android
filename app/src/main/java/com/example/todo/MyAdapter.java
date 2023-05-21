@@ -30,7 +30,7 @@ public class MyAdapter extends ArrayAdapter<ItemView> {
         View v=convertView;
         LayoutInflater inflater=LayoutInflater.from(getContext());
         v=inflater.inflate(R.layout.item_view,null);
-        CheckBox cb=v.findViewById(R.id.chbx);
+        //CheckBox cb=v.findViewById(R.id.chbx);
         TextView tv=v.findViewById(R.id.txt);
         tv.setText(arrayList.get(position).getData());
 
