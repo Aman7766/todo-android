@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edittext"
+        android:paddingStart="7dp"
+        android:hint="@string/task_add"
+        android:paddingEnd="7dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:id="@+id/button_save"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:backgroundTint="@color/Orange"
+        android:layout_gravity="right">
+    </Button>
+
+
+</LinearLayout>
