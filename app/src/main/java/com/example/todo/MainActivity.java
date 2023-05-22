@@ -3,6 +3,8 @@ package com.example.todo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -43,6 +45,8 @@ DBHandler dbHandler;
              public void onClick(View view) {
                  TaskAdd taskAdd=new TaskAdd(MainActivity.this);
                  taskAdd.show();
+//                 Window window = taskAdd.getWindow();
+//                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
              }
          });
 
