@@ -17,8 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 ArrayList<ItemView> itemViews=new ArrayList<>();
-    public final String DB_Name = "TodoDb";
-    public final int DB_VERSION = 1;
+
 ListView lv;
 FloatingActionButton fab;
 DBHandler dbHandler;
@@ -28,7 +27,7 @@ DBHandler dbHandler;
         setContentView(R.layout.activity_main);
         lv=findViewById(R.id.lv);
         fab=findViewById(R.id.fab);
-        dbHandler=new DBHandler(getApplicationContext(),DB_Name,null,DB_VERSION);
+        dbHandler=new DBHandler(MainActivity.this);
 
         itemViews.add(new ItemView(true,"Helkjdisdsoodisdsoihcisohc"));
         itemViews.add(new ItemView(true,"Hello2"));
@@ -37,7 +36,7 @@ DBHandler dbHandler;
         itemViews.add(new ItemView(true,"Hello5"));
         itemViews.add(new ItemView(true,"Hello6"));
 
-         MyAdapter myAdapter=new MyAdapter(this,R.layout.item_view,itemViews);
+         MyAdapter myAdapter=new MyAdapter(MainActivity.this,R.layout.item_view,itemViews);
          lv.setAdapter(myAdapter);
 
          fab.setOnClickListener(new View.OnClickListener() {

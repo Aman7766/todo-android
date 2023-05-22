@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edittext"
+        android:id="@+id/tasktxt"
         android:paddingStart="7dp"
         android:hint="@string/task_add"
         android:paddingEnd="7dp"/>
