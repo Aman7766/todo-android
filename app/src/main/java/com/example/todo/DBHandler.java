@@ -1,5 +1,6 @@
 package com.example.todo;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -19,7 +20,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
         // as we are writing data in our database.
-        SQLiteDatabase db = this.getWritableDatabase();
+//        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     public void onCreate(SQLiteDatabase db) {
@@ -32,7 +33,23 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     public void addData(String data)
     {
-
+        // on below line we are creating a variable for
+        // our sqlite database and calling writable method
+        // as we are writing data in our database.
+        SQLiteDatabase db = this.getWritableDatabase();
+        // on below line we are creating a
+        // variable for content values.
+       // ContentValues objects are used to insert new rows into database tables
+         ContentValues contentValues=new ContentValues();
+        //on below line we are passing all values
+        // along with its key and value pair.
+         contentValues.put(COL_2,data);
+        // after adding all values we are passing
+        // content values to our table.
+         db.insert(TABLE_NAME,null,contentValues);
+        // at last we are closing our
+        // database after adding database.
+         db.close();
     }
 
 
