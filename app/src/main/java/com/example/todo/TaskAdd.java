@@ -37,7 +37,7 @@ public class TaskAdd extends Dialog implements View.OnClickListener{
    if(!txt.getText().toString().equals(""))
    {
        dbHandler.addData(data);
-
+       dismiss();
    }
    else {
        Toast.makeText(getContext().getApplicationContext(),"Enter Data",Toast.LENGTH_SHORT).show();
