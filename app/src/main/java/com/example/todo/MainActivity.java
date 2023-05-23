@@ -16,10 +16,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-ArrayList<ItemView> itemViews=new ArrayList<>();
-
+ArrayList<ItemView> itemViews;
 ListView lv;
 FloatingActionButton fab;
+MyAdapter adapter;
 DBHandler dbHandler;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,23 +27,18 @@ DBHandler dbHandler;
         setContentView(R.layout.activity_main);
         lv=findViewById(R.id.lv);
         fab=findViewById(R.id.fab);
-        dbHandler=new DBHandler(MainActivity.this);
-
-        itemViews.add(new ItemView(true,"Helkjdisdsoodisdsoihcisohc"));
-        itemViews.add(new ItemView(true,"Hello2"));
-        itemViews.add(new ItemView(true,"Hello3"));
-        itemViews.add(new ItemView(true,"Hello4"));
-        itemViews.add(new ItemView(true,"Hello5"));
-        itemViews.add(new ItemView(true,"Hello6"));
-
-         MyAdapter myAdapter=new MyAdapter(MainActivity.this,R.layout.item_view,itemViews);
-         lv.setAdapter(myAdapter);
+        dbHandler=new DBHandler(MainActivity.this);  //1
+        itemViews=new ArrayList<>();  //2
+        itemViews=dbHandler.reaData();
+        adapter=new MyAdapter(MainActivity.this,R.layout.item_view,itemViews);
+        lv.setAdapter(adapter);
 
          fab.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                  TaskAdd taskAdd=new TaskAdd(MainActivity.this);
                  taskAdd.show();
+
 //                 Window window = taskAdd.getWindow();
 //                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
              }
@@ -51,5 +46,12 @@ DBHandler dbHandler;
 
 
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 }

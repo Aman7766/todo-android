@@ -10,8 +10,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 
 public class TaskAdd extends Dialog implements View.OnClickListener{
+
+
     Button save;
     EditText txt;
     DBHandler dbHandler;
@@ -38,6 +42,8 @@ public class TaskAdd extends Dialog implements View.OnClickListener{
    {
        dbHandler.addData(data);
        dismiss();
+
+
    }
    else {
        Toast.makeText(getContext().getApplicationContext(),"Enter Data",Toast.LENGTH_SHORT).show();

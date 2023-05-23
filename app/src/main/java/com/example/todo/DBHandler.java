@@ -2,10 +2,13 @@ package com.example.todo;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "tasks";
@@ -59,4 +62,22 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(Dropquery);
         onCreate(db);
     }
+
+    public ArrayList<ItemView> reaData()
+    {
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+TABLE_NAME,null);
+        ArrayList<ItemView> al=new ArrayList<>();
+        if(cursor.moveToFirst())
+        {
+            do{
+                al.add(new ItemView(cursor.getString(1)));
+            }
+            while(cursor.moveToNext());
+        }
+        cursor.close();
+        return al;
+
+    }
+
 }

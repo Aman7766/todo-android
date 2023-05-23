@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MyAdapter extends ArrayAdapter<ItemView> {
 
-     ArrayList<ItemView> arrayList=new ArrayList<>();
+     ArrayList<ItemView> arrayList;
   MyAdapter(Context context, int layout, ArrayList<ItemView> data)
   {
       super(context,layout,data);
@@ -33,8 +33,6 @@ public class MyAdapter extends ArrayAdapter<ItemView> {
         //CheckBox cb=v.findViewById(R.id.chbx);
         TextView tv=v.findViewById(R.id.txt);
         tv.setText(arrayList.get(position).getData());
-
-
         return v;
     }
 }
