@@ -39,6 +39,7 @@ DBHandler dbHandler;
                  TaskAdd taskAdd=new TaskAdd(MainActivity.this);
                  taskAdd.show();
 
+
 //                 Window window = taskAdd.getWindow();
 //                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
              }
