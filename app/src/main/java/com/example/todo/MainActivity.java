@@ -41,6 +41,7 @@ DBHandler dbHandler;
              public void onClick(View view) {
                Intent intent=new Intent(MainActivity.this,TaskAdd.class);
                startActivity(intent);
+
                adapter.notifyDataSetChanged();
 
 
