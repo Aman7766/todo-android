@@ -18,9 +18,8 @@
         android:layout_height="wrap_content"
         android:text="Helkjdisdsoodisdsoihcisohc"
         android:id="@+id/txt"
-
-
-        android:textSize="20sp">
+        android:textSize="20sp"
+        android:buttonTint="@color/black">
         </CheckBox>
 
 

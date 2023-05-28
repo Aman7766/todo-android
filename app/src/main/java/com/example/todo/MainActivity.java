@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements AdapterView.OnItemClickListener {
 ArrayList<ItemView> itemViews;
 ListView lv;
 FloatingActionButton fab;
@@ -32,12 +34,14 @@ DBHandler dbHandler;
         itemViews=dbHandler.reaData();
         adapter=new MyAdapter(MainActivity.this,R.layout.item_view,itemViews);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(this);
 
          fab.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 TaskAdd taskAdd=new TaskAdd(MainActivity.this);
-                 taskAdd.show();
+               Intent intent=new Intent(MainActivity.this,TaskAdd.class);
+               startActivity(intent);
+               adapter.notifyDataSetChanged();
 
 
 //                 Window window = taskAdd.getWindow();
@@ -54,5 +58,11 @@ DBHandler dbHandler;
         super.onRestart();
         finish();
         startActivity(getIntent());
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        System.out.println("Hello");
+    Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT).show();
     }
 }

@@ -9,21 +9,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 
-public class TaskAdd extends Dialog implements View.OnClickListener{
+public class TaskAdd extends AppCompatActivity implements View.OnClickListener{
 
 
     Button save;
     EditText txt;
     DBHandler dbHandler;
-    public TaskAdd(Context context) {
-        super(context);
-        dbHandler=new DBHandler(getContext().getApplicationContext());
 
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +29,7 @@ public class TaskAdd extends Dialog implements View.OnClickListener{
         txt=findViewById(R.id.tasktxt);
         save=findViewById(R.id.button_save);
         save.setOnClickListener(this);
+        dbHandler=new DBHandler(TaskAdd.this);
     }
 
 
@@ -41,12 +39,14 @@ public class TaskAdd extends Dialog implements View.OnClickListener{
    if(!txt.getText().toString().equals(""))
    {
        dbHandler.addData(data);
-       dismiss();
+       finish();
+
+
 
 
    }
    else {
-       Toast.makeText(getContext().getApplicationContext(),"Enter Data",Toast.LENGTH_SHORT).show();
+       Toast.makeText(getApplicationContext(),"Enter Data",Toast.LENGTH_SHORT).show();
    }
 
 
